@@ -1,68 +1,51 @@
 # Kiosk Lock Macro
 
-An example Cisco Desk and Board macro for locking and unlocking a device using a custom PIN
+This is an example Cisco Desk and Board macro for locking and unlocking ( enable and disabling Kiosk mode) by leveraging a custom PIN prompt.
+
+![Kiosk Lock Macro Demo](/images/kiosk-lock.gif)
 
 ## Overview
 
-Go into detail about the implementation.   3-4 Sentences
-**HOW** the implementation works. You need not give end-to-end details but an overview.
+The macro saves UI Extension buttons to both the ``Homescreen`` and ``Control Panel`` of the device.
 
+While in Kiosk Mode, a user can access the Control Panel by tapping on the open web app three times with three fingers.
 
+Tapping on the ``Unlock Device`` button opens a PIN prompt and if the correct PIN is entered, Kiosk Mode is disabled allowing access to the RoomOS interface.
 
-### Flow Diagram
+The Device can be locked at any time by tapping either of the ``Lock Device`` buttons.
 
-<!-- *MANDATORY*  Insert Your Flow Diagram Here (if small PoC, alternative option is to include break down how it works here instead of diagram) -->
-![image/gif](insert img link here)
-
-
+Custom button icons are downloaded by the macro from online sources for a smaller macro file size.
 
 ## Setup
 
 ### Prerequisites & Dependencies: 
 
-- Is this dependant on having another repo
-- Insert pre-requisites in bullets
-- Insert pre-requisite here  Also state any assumptions that you may have made about the user.
-- Limit nested bullets
+- Webex Desk or Board series device running RoomOS/CE 11.11 or greater
+- Web admin access to the device to upload the macro.
 
-
-<!-- GETTING STARTED -->
 
 ### Installation Steps:
-1.  Include step one here
-    ```sh
-    insert line of code here if applicable
-    ```
-2.  Insert step two here
-    Insert screenshot, if applicable
+1. Download the ``kiosk-lock.js`` file and upload it to your Webex Room devices Macro editor via the web interface.
+2. Configure the Macro by changing the initial values, there are comments explaining each one.
+3. Enable the Macro on the editor.
     
-    
-    
+
 ## Demo
 
-<!-- Insert link to the website below (if deployed). -->
-Check out our live demo, available [here](<insert link>)!
-
-<!-- Keep the following statement -->
 *For more demos & PoCs like this, check out our [Webex Labs site](https://collabtoolbox.cisco.com/webex-labs).
 
-
-<!-- Update your vidcast title, video screenshot, vidcast/youtube link & name -->
-[![Your Video Title ](assets/peer_support_main.PNG)](https://www.youtube.com/watch?v=SqZhiC8jHhU&t=10s, "<insert demo name here>")
-
+[![Vidcast Demo](images/vidcast.jpeg)](https://app.vidcast.io/share/025b5873-d020-4d51-a94f-8601ef3a9533)
 
 
 ## License
-<!-- MAKE SURE an MIT license is included in your Repository. If another license is needed, verify with management. This is for legal reasons.--> 
 
-<!-- Keep the following statement -->
 All contents are licensed under the MIT license. Please see [license](LICENSE) for details.
 
 
 ## Disclaimer
-<!-- Keep the following here -->  
- Everything included is for demo and Proof of Concept purposes only. Use of the site is solely at your own risk. This site may contain links to third party content, which we do not warrant, endorse, or assume liability for. These demos are for Cisco Webex usecases, but are not Official Cisco Webex Branded demos.
+
+ Everything included is for demo and Proof of Concept purposes only. Use of the site is solely at your own risk. This site may contain links to third party content, which we do not warrant, endorse, or assume liability for. These demos are for Cisco Webex use cases, but are not Official Cisco Webex Branded demos.
 
 
 ## Questions
-Please contact the WXSD team at [wxsd@external.cisco.com](mailto:wxsd@external.cisco.com?subject=RepoName) for questions. Or, if you're a Cisco internal employee, reach out to us on the Webex App via our bot (globalexpert@webex.bot). In the "Engagement Type" field, choose the "API/SDK Proof of Concept Integration Development" option to make sure you reach our team. 
+Please contact the WXSD team at [wxsd@external.cisco.com](mailto:wxsd@external.cisco.com?subject=kiosk-lock-macro) for questions. Or, if you're a Cisco internal employee, reach out to us on the Webex App via our bot (globalexpert@webex.bot). In the "Engagement Type" field, choose the "API/SDK Proof of Concept Integration Development" option to make sure you reach our team. 

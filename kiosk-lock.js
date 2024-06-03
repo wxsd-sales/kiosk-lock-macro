@@ -87,8 +87,7 @@ async function main() {
 
   xapi.Status.Standby.State.on(async state => {
     console.log('Standby State Changed To: ', state)
-    const inKioskMode = await getKioskMode();
-    if (inKioskMode) return // Take no action if kiosk mode is already enabled.
+    if (await inKioskMode()) return // Take no action if kiosk mode is already enabled.
 
     if (state === 'EnteringStandby' || state === 'Standby') {
       if (config.autoCleanupOnStandby) performRoomClean();
