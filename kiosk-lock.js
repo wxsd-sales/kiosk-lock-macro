@@ -58,6 +58,9 @@ async function main() {
   // Create our Button and UI Panel
   await createButtons();
 
+  // Subscribe to Kiosk Mode changes and update the buttons UI
+  xapi.Config.UserInterface.Kiosk.Mode.on(createButtons);
+
   // Enable WebEngine and WebGL
   xapi.Config.WebEngine.Mode.set('On');
   xapi.Config.WebEngine.Features.WebGL.set('On');
@@ -87,6 +90,7 @@ async function main() {
 
   xapi.Status.Standby.State.on(async state => {
     console.log('Standby State Changed To: ', state)
+
     if (await inKioskMode()) return // Take no action if kiosk mode is already enabled.
 
     if (state === 'EnteringStandby' || state === 'Standby') {
@@ -199,16 +203,14 @@ async function createButtons() {
     const icon = button.icon.startsWith('http') ?  await getIcon(button.icon) : `<Icon>${icon}</Icon>`;
     const color = button?.color ?? '';
 
-    const panel = `<Extensions>
-                  <Panel>
+    const panel = `<Extensions><Panel>
                     <Location>${location}</Location>
                     ${icon}
                     ${color}
                     <Name>${button.name}</Name>
                     ${order}
                     <ActivityType>Custom</ActivityType>
-                  </Panel>
-                </Extensions>`;
+                  </Panel></Extensions>`;
     await xapi.Command.UserInterface.Extensions.Panel.Save({ PanelId: panelId + location }, panel)
       .catch(error => console.log(`Unable to save panel [${panelId}] - `, error.Message))
   })
